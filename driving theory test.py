@@ -1,10 +1,18 @@
+from tkinter import *
 import tkinter as tk
 from tkinter.constants import END
 from PIL import ImageTk, Image
 import csv
 from tkinter import messagebox
 
+score = 0
+
 root = tk.Tk()
+
+vara1 = IntVar()
+vara2 = IntVar()
+vara3 = IntVar()
+vara4 = IntVar()
 
 username_field = tk.Entry(root)
 password_field = tk.Entry(root)
@@ -27,6 +35,11 @@ topics_background = Image.open("/Users/nick/Documents/GitHub/driving-theory-app/
 topics_resized = topics_background.resize((1450, 770), Image.ANTIALIAS)
 topics_background = ImageTk.PhotoImage(topics_resized)
 
+
+# THESE ARE PICTURES FOR THE ROAD QUESTIONS
+img = Image.open("/Users/nick/Documents/GitHub/driving-theory-app/road-question-images/hazard_lights.png")
+resizedq = img.resize((100, 100), Image.ANTIALIAS)
+img_background = ImageTk.PhotoImage(resizedq)
 
 
 def loginScreen():
@@ -175,9 +188,15 @@ def topicsScreen():
     welcome_text = tk.Label(root, text= "Hello "+ name + " - Pick the specific topic you would like to practice. \n You can also select Random for a mixture of all the topics", font=("Helvitca", 18))
     welcome_text.place(x=350, y=40, height= 120, width=590)
 
-def questionsScreen(topic):
-    print("placeholder")
+    
 
+def questionsScreen(topic):
+
+    global vara1
+    global vara2 
+    global vara3 
+    global vara4
+    global score
     global root
     global name
 
@@ -186,6 +205,111 @@ def questionsScreen(topic):
 
     if topic == 'road':
         print("placeholder")
+
+        def checkIfRight(questionNum):
+
+            global score
+            global vara1
+            global vara2 
+            global vara3 
+            global vara4
+            global score
+            global root
+            
+
+            if questionNum == 1:
+                def q1():
+                    global score
+                    global vara1
+                    global vara2 
+                    global vara3 
+                    global vara4
+                    global score
+                    global root
+    
+                    if  vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                        message_popup('select')
+                    elif vara3.get() == 1 and vara1.get() == 0 and vara2.get() == 0 and vara4.get() == 0:
+                        score +=1 
+                        question2()
+                    else: 
+                        question2()
+                q1()
+            
+
+
+        class road_questions:
+            def __init__(self, q, a1, a2, a3, a4, pic):
+                self.q = q
+                self.a1 = a1
+                self.a2 = a2
+                self.a3 = a3
+                self.a4 = a4
+                self.pic = pic
+        
+        roadsq1 = road_questions("When may you use hazard warning lights while you're driving?", "Instead of sounding the horn in a \n built-up area between 11.30pm and 7.00am", "On rural routes, after \n a sign warniing of animals", "On a motorway or undrestricted rual \n carridgeway, to warn of a hazard ahead", "On the approach to toucan crossings, \n where cyclists are waiting to cross", "/Users/nick/Documents/GitHub/driving-theory-app/road-question-images/hazard_lights.png")
+        roadsq2 = road_questions("What does this sign mean?", "No entry for traffic turning left", "Turn left for parking area", "Turn left for ferry terminal", "No through road on the left", "/Users/nick/Documents/GitHub/driving-theory-app/road_question_images/no_through_road.png")
+        roadsq3 = road_questions("What does this traffic sign mean?", "Advisory maximum speed Limit", "Compulstory maximum speed limit", "Advised seperation distance", "Compulsory minimum speed limit", "/Users/nick/Documents/GitHub/driving-theory-app/road_question_images/speedlimit.png")
+        roadsq4 = road_questions("What should you do when you're approaching traffic lights that have red and amber showing together?", "Pass the lights if the road is clear", "Wait for the green light", "Stop because the lights are changing to red", "Take care becuase there's a fault with the lights", "/Users/nick/Documents/GitHub/driving-theory-app/road_question_images/red_yellow.png")
+        roadsq5 = road_questions("You're in a tunnel and you see this sign, What does it mean?", "Beware of pedestrians crossing ahead", "Beware of pedestrians: no footpath ahead", "Diretions to an emergrency pedestrian exit", "No access for pedestrians", "/Users/nick/Documents/GitHub/driving-theory-app/road_question_images/exit.png")
+        roadsq6 = road_questions("What does thiis sign mean", "Uneven road", "Adverse ccamber", "Steep hill downwards", "Steephill upwards", "/Users/nick/Documents/GitHub/driving-theory-app/road_question_images/steepness.png")
+        roadsq7 = road_questions("What does this traffic sign mean", "Slippery road ahead", "Service area ahead", "Tyres liable to punctures ahead", "Danger ahead", "/Users/nick/Documents/GitHub/driving-theory-app/road_question_images/hazard_ahead.png")
+        roadsq8 = road_questions("What does this white arrow on the road mean?", "All vehicles turn left", "Return to your side of the road", "Entrance to the left", "Road bends to the left", "/Users/nick/Documents/GitHub/driving-theory-app/road_question_images/overtake.png")
+        roadsq9 = road_questions("What does this sign mean?", "Right-hand lane for turning right", "The right-hand land ahead is narrow", "Right-hand lane for buses only", "The right-hand lane is closed", "/Users/nick/Documents/GitHub/driving-theory-app/road_question_images/road_closed.png")
+        roadsq10 = road_questions("What's the meaning of thiis traffic sign?", "End of the two-way road", "You have prioriity over vehicles coming towards you", "Give priority to vehicles coming towards you", "Bus lane ahead", "/Users/nick/Documents/GitHub/driving-theory-app/road_question_images/priority.png")
+
+    
+        def displayQuestion(q, a1, a2, a3, a4, pic):
+
+            global root
+            global img_background_label
+
+            canvasRoad = tk.Canvas(root, height=100, width=100, bd=-2)
+            canvasRoad.pack()
+
+            
+            img_background_label = tk.Label(root, image=img_background)
+            img_background_label.place(x=100, y=100)
+
+            questionLabel = tk.Label(root, text = q, font=("Helvitca", 25))
+            questionLabel.place(x=0, y=50, height= 100, width=1700)
+
+            checkboxa1 = Checkbutton(root, text = a1, font=("Helvitca", 18), variable = vara1)
+            checkboxa1.deselect()
+            checkboxa1.place(x=200, y=540, height= 40, width=400)
+            
+            checkboxa2 = Checkbutton(root, text = a2, font=("Helvitca", 18), variable = vara2)
+            checkboxa2.deselect()
+            checkboxa2.place(x=200, y=640, height= 40, width=400)
+            
+            checkboxa3 = Checkbutton(root, text = a3, font=("Helvitca", 18), variable = vara3)
+            checkboxa3.deselect()
+            checkboxa3.place(x=800, y=540, height= 40, width=500)
+
+            checkboxa4 = Checkbutton(root, text = a4, font=("Helvitca", 18), variable = vara4)
+            checkboxa4.deselect()
+            checkboxa4.place(x=800, y=640, height= 40, width=500)
+
+            next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(1))
+            next_button.place(x=470, y=580, height= 30, width=100)
+            
+            
+
+            
+
+
+        def question1():
+            displayQuestion(roadsq1.q, roadsq1.a1, roadsq1.a2, roadsq1.a3, roadsq1.a4, roadsq1.pic)
+        
+        def question2():
+            print(score)
+            
+
+
+        question1()
+        
+
+
     if topic == 'attitude':
         print("placeholder")
     if topic == 'hazard':
@@ -210,6 +334,8 @@ def message_popup(reason):
         messagebox.showerror("Error", "Username and password don't match. Try again.")
     elif reason == 'reg':
         messagebox.showerror("Error", "Password doesn't match. Try again.")
+    elif reason == 'select':
+        messagebox.showerror("Error", "You have not selected an answer")
 
 # loginScreen()
 topicsScreen()
