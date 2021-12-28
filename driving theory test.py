@@ -108,6 +108,80 @@ imgAttitude5 = Image.open(attitudesq5.pic)
 resizedAttitude5 = imgAttitude5.resize((400, 300), Image.ANTIALIAS)
 img_Attitude_5 = ImageTk.PhotoImage(resizedAttitude5)
 
+
+
+class hazard_questions:
+            def __init__(self, q, a1, a2, a3, a4, pic):
+                self.q = q
+                self.a1 = a1
+                self.a2 = a2
+                self.a3 = a3
+                self.a4 = a4
+                self.pic = pic
+
+hazardq1 = hazard_questions("You're driving a car fitted with an automatic transmission. When should you use 'kick down'", "To brake progressively", "To improve fuel economy", "To engage cruise control", "To accelerate quickly", "/Users/nick/Documents/GitHub/driving-theory-app/hazard-question-images/automatic.png")
+hazardq2 = hazard_questions("Some two-way roads are divided into three lanes. Why are they particularly dangerous", "Traffic uses the middle lane for emergencies only", "Traffic can overtake on the left", "Traffic in both directions can use the middle lane to overtake", "Traffic can travel faster in poor weather conditions", "/Users/nick/Documents/GitHub/driving-theory-app/hazard-question-images/twoway_lanes.png")
+hazardq3 = hazard_questions("What type of vehicle could you expect to meet in the middle of the road?", "Car", "Lorry", "Bicycle", "Motorcycle", "/Users/nick/Documents/GitHub/driving-theory-app/hazard-question-images/bridge.png")
+hazardq4 = hazard_questions("What hazard should you be aware of when travelling along this street?", "Large goods vehicles", "Lack of road markings", "Glare from the sun", "Children running out between vehicles","/Users/nick/Documents/GitHub/driving-theory-app/hazard-question-images/street.png")
+hazardq5 = hazard_questions("What should you do if you begin to feel drowsy while you're driving?", "Continue with your journey but drive more slowly", "Close the car windows to help you concentrate", "Stop and rest as soon as possible", "Turn the heater up to keep you warm and comfortable", "/Users/nick/Documents/GitHub/driving-theory-app/hazard-question-images/drowsy.png")
+
+imgHazard1 = Image.open(hazardq1.pic)
+resizedHazard1 = imgHazard1.resize((400, 300), Image.ANTIALIAS)
+img_Hazard_1 = ImageTk.PhotoImage(resizedHazard1)
+
+imgHazard2 = Image.open(hazardq2.pic)
+resizedHazard2 = imgHazard2.resize((400, 300), Image.ANTIALIAS)
+img_Hazard_2 = ImageTk.PhotoImage(resizedHazard2)
+
+imgHazard3 = Image.open(hazardq3.pic)
+resizedHazard3 = imgHazard3.resize((400, 300), Image.ANTIALIAS)
+img_Hazard_3 = ImageTk.PhotoImage(resizedHazard3)
+
+imgHazard4 = Image.open(hazardq4.pic)
+resizedHazard4 = imgHazard4.resize((400, 300), Image.ANTIALIAS)
+img_Hazard_4 = ImageTk.PhotoImage(resizedHazard4)
+
+imgHazard5 = Image.open(hazardq5.pic)
+resizedHazard5 = imgHazard5.resize((400, 300), Image.ANTIALIAS)
+img_Hazard_5 = ImageTk.PhotoImage(resizedHazard5)
+
+
+
+class motorway_questions:
+            def __init__(self, q, a1, a2, a3, a4, pic):
+                self.q = q
+                self.a1 = a1
+                self.a2 = a2
+                self.a3 = a3
+                self.a4 = a4
+                self.pic = pic
+
+motorwayq1 = motorway_questions("What helps to reduce traffic bunching on a motorway", "National speed limits", "Lane closures", "Variable speed limits", "Contraflow Systems", "/Users/nick/Documents/GitHub/driving-theory-app/motorway-question-images/traffic_bunching.png")
+motorwayq2 = motorway_questions("What's the national speed limit on motorways for cars and motorcycles?", "70 mph", "30 mph", "60 mph", "50mph", "/Users/nick/Documents/GitHub/driving-theory-app/motorway-question-images/speed_limit.png")
+motorwayq3 = motorway_questions("You're towing a trailer along a three-lane motorway. When may you use the right-hand lane?", "When there are lane closures", "When you can maintain a high speed", "When large vehicles are in the left and centre lanes", "When there's slow moving traffic", "/Users/nick/Documents/GitHub/driving-theory-app/motorway-question-images/towing_trailer.png")
+motorwayq4 = motorway_questions("On a smart motorway, what does this sign mean?", "Use the three right-hand lanes only", "Use the hard shoulder only", "Use all the lanes, including the hard shoulder", "Use any lanes except the hard shoulder", "/Users/nick/Documents/GitHub/driving-theory-app/motorway-question-images/smart_motorway.png")
+motorwayq5 = motorway_questions("You're in a motorway. What must you do if there's a red cross showing above every lane?", "Slow down and watch for further signals", "Leave at the next exit", "Pull onto the hard shoulder", "Stop and wait", "/Users/nick/Documents/GitHub/driving-theory-app/motorway-question-images/crossed_motorway.png")
+
+imgMotorway1 = Image.open(motorwayq1.pic)
+resizedMotorway1 = imgMotorway1.resize((400, 300), Image.ANTIALIAS)
+img_Motorway_1 = ImageTk.PhotoImage(resizedMotorway1)
+
+imgMotorway2 = Image.open(motorwayq2.pic)
+resizedMotorway2 = imgMotorway2.resize((400, 300), Image.ANTIALIAS)
+img_Motorway_2 = ImageTk.PhotoImage(resizedMotorway2)
+
+imgMotorway3 = Image.open(motorwayq3.pic)
+resizedMotorway3 = imgMotorway3.resize((400, 300), Image.ANTIALIAS)
+img_Motorway_3 = ImageTk.PhotoImage(resizedMotorway3)
+
+imgMotorway4 = Image.open(motorwayq4.pic)
+resizedMotorway4 = imgMotorway4.resize((400, 300), Image.ANTIALIAS)
+img_Motorway_4 = ImageTk.PhotoImage(resizedMotorway4)
+
+imgMotorway5 = Image.open(motorwayq5.pic)
+resizedMotorway5 = imgMotorway5.resize((400, 300), Image.ANTIALIAS)
+img_Motorway_5 = ImageTk.PhotoImage(resizedMotorway5)
+
 def loginScreen():
     global username_field
     global password_field
@@ -537,6 +611,8 @@ def questionsScreen(topic):
         def question5():
             displayQuestion(roadsq5.q, roadsq5.a1, roadsq5.a2, roadsq5.a3, roadsq5.a4, 5)
 
+        question1()
+
     if topic == 'attitude':
 
         def checkIfRight(questionNum):
@@ -808,19 +884,552 @@ def questionsScreen(topic):
 
         question1()
         
-
-        
     if topic == 'hazard':
-        print("placeholder")
+
+        def checkIfRight(questionNum):
+
+            global score
+            global vara1
+            global vara2 
+            global vara3 
+            global vara4
+            global score
+            global root
+            
+
+            if questionNum == 1:
+
+                if  vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    message_popup('select')
+                elif vara4.get() == 1 and vara1.get() == 0 and vara3.get() == 0 and vara2.get() == 0:
+                    score +=1 
+                    question2()
+                else: 
+                    question2()
+
+            elif questionNum == 2: 
+
+                if vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    message_popup('select')
+                elif vara2.get() == 1 and vara1.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    score +=1 
+                    question3()
+                else: 
+                    question3()
+            
+            elif questionNum == 3: 
+
+                if vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    message_popup('select')
+                elif vara2.get() == 1 and vara1.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    score +=1 
+                    question4()
+                else: 
+                    question4()
+
+            elif questionNum == 4: 
+
+                if vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    message_popup('select')
+                elif vara4.get() == 1 and vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0:
+                    score +=1 
+                    question5()
+                else: 
+                    question5()
+
+            elif questionNum == 5: 
+
+                if vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    message_popup('select')
+                elif vara3.get() == 1 and vara1.get() == 0 and vara2.get() == 0 and vara4.get() == 0:
+                    score +=1 
+                    resultsScreen()
+                else: 
+                    resultsScreen()
+        
+        def displayQuestion(q, a1, a2, a3, a4, questionNum):
+
+            global root
+            global img_background_label
+            
+            def q1():
+
+                global root
+                global img_attitudes_1 
+
+                canvasRoad = tk.Canvas(root, height=500, width=500, bd=-2)
+                canvasRoad.pack()
+
+                
+                img_background_label = tk.Label(root, image=img_Hazard_1)
+                img_background_label.place(x=500, y=200)
+
+                questionLabel = tk.Label(root, text = q, font=("Helvitca", 25))
+                questionLabel.place(x=0, y=50, height= 100, width=1700)
+
+                checkboxa1 = Checkbutton(root, text = a1, font=("Helvitca", 18), variable = vara1)
+                checkboxa1.deselect()
+                checkboxa1.place(x=200, y=540, height= 40, width=400)
+                
+                checkboxa2 = Checkbutton(root, text = a2, font=("Helvitca", 18), variable = vara2)
+                checkboxa2.deselect()
+                checkboxa2.place(x=200, y=640, height= 40, width=400)
+                
+                checkboxa3 = Checkbutton(root, text = a3, font=("Helvitca", 18), variable = vara3)
+                checkboxa3.deselect()
+                checkboxa3.place(x=800, y=540, height= 40, width=500)
+
+                checkboxa4 = Checkbutton(root, text = a4, font=("Helvitca", 18), variable = vara4)
+                checkboxa4.deselect()
+                checkboxa4.place(x=800, y=640, height= 40, width=500)
+
+                next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(1))
+                next_button.place(x=1300, y=680, height= 30, width=100)
+
+            def q2():
+
+                global root
+                global img_background_label
+
+                canvasRoad = tk.Canvas(root, height=500, width=500, bd=-2)
+                canvasRoad.pack()
+
+                
+                img_background_label = tk.Label(root, image=img_Hazard_2)
+                img_background_label.place(x=500, y=200)
+
+                questionLabel = tk.Label(root, text = q, font=("Helvitca", 25))
+                questionLabel.place(x=0, y=50, height= 100, width=1700)
+
+                checkboxa1 = Checkbutton(root, text = a1, font=("Helvitca", 18), variable = vara1)
+                checkboxa1.deselect()
+                checkboxa1.place(x=200, y=540, height= 40, width=400)
+                
+                checkboxa2 = Checkbutton(root, text = a2, font=("Helvitca", 18), variable = vara2)
+                checkboxa2.deselect()
+                checkboxa2.place(x=200, y=640, height= 40, width=400)
+                
+                checkboxa3 = Checkbutton(root, text = a3, font=("Helvitca", 18), variable = vara3)
+                checkboxa3.deselect()
+                checkboxa3.place(x=800, y=540, height= 40, width=500)
+
+                checkboxa4 = Checkbutton(root, text = a4, font=("Helvitca", 18), variable = vara4)
+                checkboxa4.deselect()
+                checkboxa4.place(x=800, y=640, height= 40, width=500)
+
+                next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(2))
+                next_button.place(x=1300, y=680, height= 30, width=100)
+
+            def q3():
+
+                global root
+                global img_background_label
+
+                canvasRoad = tk.Canvas(root, height=500, width=400, bd=-2)
+                canvasRoad.pack()
+
+                
+                img_background_label = tk.Label(root, image=img_Hazard_3)
+                img_background_label.place(x=500, y=200)
+
+                questionLabel = tk.Label(root, text = q, font=("Helvitca", 25))
+                questionLabel.place(x=50, y=50, height= 100, width=1000)
+
+                checkboxa1 = Checkbutton(root, text = a1, font=("Helvitca", 18), variable = vara1)
+                checkboxa1.deselect()
+                checkboxa1.place(x=200, y=540, height= 40, width=400)
+                
+                checkboxa2 = Checkbutton(root, text = a2, font=("Helvitca", 18), variable = vara2)
+                checkboxa2.deselect()
+                checkboxa2.place(x=200, y=640, height= 40, width=400)
+                
+                checkboxa3 = Checkbutton(root, text = a3, font=("Helvitca", 18), variable = vara3)
+                checkboxa3.deselect()
+                checkboxa3.place(x=800, y=540, height= 40, width=500)
+
+                checkboxa4 = Checkbutton(root, text = a4, font=("Helvitca", 18), variable = vara4)
+                checkboxa4.deselect()
+                checkboxa4.place(x=800, y=640, height= 40, width=500)
+
+                next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(3))
+                next_button.place(x=1300, y=680, height= 30, width=100)
+            
+            def q4():
+
+                global root
+                global img_background_label
+
+                canvasRoad = tk.Canvas(root, height=500, width=400, bd=-2)
+                canvasRoad.pack()
+
+                
+                img_background_label = tk.Label(root, image=img_Hazard_4)
+                img_background_label.place(x=500, y=200)
+
+                questionLabel = tk.Label(root, text = q, font=("Helvitca", 25))
+                questionLabel.place(x=50, y=50, height= 100, width=1000)
+
+                checkboxa1 = Checkbutton(root, text = a1, font=("Helvitca", 18), variable = vara1)
+                checkboxa1.deselect()
+                checkboxa1.place(x=200, y=540, height= 40, width=400)
+                
+                checkboxa2 = Checkbutton(root, text = a2, font=("Helvitca", 18), variable = vara2)
+                checkboxa2.deselect()
+                checkboxa2.place(x=200, y=640, height= 40, width=400)
+                
+                checkboxa3 = Checkbutton(root, text = a3, font=("Helvitca", 18), variable = vara3)
+                checkboxa3.deselect()
+                checkboxa3.place(x=800, y=540, height= 40, width=500)
+
+                checkboxa4 = Checkbutton(root, text = a4, font=("Helvitca", 18), variable = vara4)
+                checkboxa4.deselect()
+                checkboxa4.place(x=800, y=640, height= 40, width=500)
+
+                next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(4))
+                next_button.place(x=1300, y=680, height= 30, width=100)
+
+            def q5():
+
+                global root
+                global img_background_label
+
+                canvasRoad = tk.Canvas(root, height=500, width=400, bd=-2)
+                canvasRoad.pack()
+
+                
+                img_background_label = tk.Label(root, image=img_Hazard_5)
+                img_background_label.place(x=500, y=200)
+
+                questionLabel = tk.Label(root, text = q, font=("Helvitca", 25))
+                questionLabel.place(x=50, y=50, height= 100, width=1000)
+
+                checkboxa1 = Checkbutton(root, text = a1, font=("Helvitca", 18), variable = vara1)
+                checkboxa1.deselect()
+                checkboxa1.place(x=200, y=540, height= 40, width=400)
+                
+                checkboxa2 = Checkbutton(root, text = a2, font=("Helvitca", 18), variable = vara2)
+                checkboxa2.deselect()
+                checkboxa2.place(x=200, y=640, height= 40, width=400)
+                
+                checkboxa3 = Checkbutton(root, text = a3, font=("Helvitca", 18), variable = vara3)
+                checkboxa3.deselect()
+                checkboxa3.place(x=800, y=540, height= 40, width=500)
+
+                checkboxa4 = Checkbutton(root, text = a4, font=("Helvitca", 18), variable = vara4)
+                checkboxa4.deselect()
+                checkboxa4.place(x=800, y=640, height= 40, width=500)
+
+                next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(5))
+                next_button.place(x=1300, y=680, height= 30, width=100)
+
+            if questionNum == 1:
+                q1()
+            
+            if questionNum == 2:
+                q2()
+            
+            if questionNum == 3:
+                q3()
+
+            if questionNum == 4:
+                q4()
+            
+            if questionNum == 5:
+                q5()
+
+        def question1():
+            displayQuestion(hazardq1.q, hazardq1.a1, hazardq1.a2, hazardq1.a3, hazardq1.a4, 1)
+        
+        def question2():
+            displayQuestion(hazardq2.q, hazardq2.a1, hazardq2.a2, hazardq2.a3, hazardq2.a4, 2)
+
+        def question3():
+            displayQuestion(hazardq3.q, hazardq3.a1, hazardq3.a2, hazardq3.a3, hazardq3.a4, 3)
+
+        def question4():
+            displayQuestion(hazardq4.q, hazardq4.a1, hazardq4.a2, hazardq4.a3, hazardq4.a4, 4)
+        
+        def question5():
+            displayQuestion(hazardq5.q, hazardq5.a1, hazardq5.a2, hazardq5.a3, hazardq5.a4, 5)
+
+        question1()
+
     if topic == 'motorway':
-        print("placeholder")
+
+        def checkIfRight(questionNum):
+
+            global score
+            global vara1
+            global vara2 
+            global vara3 
+            global vara4
+            global score
+            global root
+            
+
+            if questionNum == 1:
+
+                if  vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    message_popup('select')
+                elif vara3.get() == 1 and vara1.get() == 0 and vara4.get() == 0 and vara2.get() == 0:
+                    score +=1 
+                    question2()
+                else: 
+                    question2()
+
+            elif questionNum == 2: 
+
+                if vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    message_popup('select')
+                elif vara1.get() == 1 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    score +=1 
+                    question3()
+                else: 
+                    question3()
+            
+            elif questionNum == 3: 
+
+                if vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    message_popup('select')
+                elif vara1.get() == 1 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    score +=1 
+                    question4()
+                else: 
+                    question4()
+
+            elif questionNum == 4: 
+
+                if vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    message_popup('select')
+                elif vara3.get() == 1 and vara1.get() == 0 and vara2.get() == 0 and vara4.get() == 0:
+                    score +=1 
+                    question5()
+                else: 
+                    question5()
+
+            elif questionNum == 5: 
+
+                if vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0 and vara4.get() == 0:
+                    message_popup('select')
+                elif vara4.get() == 1 and vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0:
+                    score +=1 
+                    resultsScreen()
+                else: 
+                    resultsScreen()
+        
+        def displayQuestion(q, a1, a2, a3, a4, questionNum):
+
+            global root
+            global img_background_label
+            
+            def q1():
+
+                global root
+                global img_attitudes_1 
+
+                canvasRoad = tk.Canvas(root, height=500, width=500, bd=-2)
+                canvasRoad.pack()
+
+                
+                img_background_label = tk.Label(root, image=img_Motorway_1)
+                img_background_label.place(x=500, y=200)
+
+                questionLabel = tk.Label(root, text = q, font=("Helvitca", 25))
+                questionLabel.place(x=0, y=50, height= 100, width=1700)
+
+                checkboxa1 = Checkbutton(root, text = a1, font=("Helvitca", 18), variable = vara1)
+                checkboxa1.deselect()
+                checkboxa1.place(x=200, y=540, height= 40, width=400)
+                
+                checkboxa2 = Checkbutton(root, text = a2, font=("Helvitca", 18), variable = vara2)
+                checkboxa2.deselect()
+                checkboxa2.place(x=200, y=640, height= 40, width=400)
+                
+                checkboxa3 = Checkbutton(root, text = a3, font=("Helvitca", 18), variable = vara3)
+                checkboxa3.deselect()
+                checkboxa3.place(x=800, y=540, height= 40, width=500)
+
+                checkboxa4 = Checkbutton(root, text = a4, font=("Helvitca", 18), variable = vara4)
+                checkboxa4.deselect()
+                checkboxa4.place(x=800, y=640, height= 40, width=500)
+
+                next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(1))
+                next_button.place(x=1300, y=680, height= 30, width=100)
+
+            def q2():
+
+                global root
+                global img_background_label
+
+                canvasRoad = tk.Canvas(root, height=500, width=500, bd=-2)
+                canvasRoad.pack()
+
+                
+                img_background_label = tk.Label(root, image=img_Motorway_2)
+                img_background_label.place(x=500, y=200)
+
+                questionLabel = tk.Label(root, text = q, font=("Helvitca", 25))
+                questionLabel.place(x=0, y=50, height= 100, width=1700)
+
+                checkboxa1 = Checkbutton(root, text = a1, font=("Helvitca", 18), variable = vara1)
+                checkboxa1.deselect()
+                checkboxa1.place(x=200, y=540, height= 40, width=400)
+                
+                checkboxa2 = Checkbutton(root, text = a2, font=("Helvitca", 18), variable = vara2)
+                checkboxa2.deselect()
+                checkboxa2.place(x=200, y=640, height= 40, width=400)
+                
+                checkboxa3 = Checkbutton(root, text = a3, font=("Helvitca", 18), variable = vara3)
+                checkboxa3.deselect()
+                checkboxa3.place(x=800, y=540, height= 40, width=500)
+
+                checkboxa4 = Checkbutton(root, text = a4, font=("Helvitca", 18), variable = vara4)
+                checkboxa4.deselect()
+                checkboxa4.place(x=800, y=640, height= 40, width=500)
+
+                next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(2))
+                next_button.place(x=1300, y=680, height= 30, width=100)
+
+            def q3():
+
+                global root
+                global img_background_label
+
+                canvasRoad = tk.Canvas(root, height=500, width=400, bd=-2)
+                canvasRoad.pack()
+
+                
+                img_background_label = tk.Label(root, image=img_Motorway_3)
+                img_background_label.place(x=500, y=200)
+
+                questionLabel = tk.Label(root, text = q, font=("Helvitca", 25))
+                questionLabel.place(x=50, y=50, height= 100, width=1000)
+
+                checkboxa1 = Checkbutton(root, text = a1, font=("Helvitca", 18), variable = vara1)
+                checkboxa1.deselect()
+                checkboxa1.place(x=200, y=540, height= 40, width=400)
+                
+                checkboxa2 = Checkbutton(root, text = a2, font=("Helvitca", 18), variable = vara2)
+                checkboxa2.deselect()
+                checkboxa2.place(x=200, y=640, height= 40, width=400)
+                
+                checkboxa3 = Checkbutton(root, text = a3, font=("Helvitca", 18), variable = vara3)
+                checkboxa3.deselect()
+                checkboxa3.place(x=800, y=540, height= 40, width=500)
+
+                checkboxa4 = Checkbutton(root, text = a4, font=("Helvitca", 18), variable = vara4)
+                checkboxa4.deselect()
+                checkboxa4.place(x=800, y=640, height= 40, width=500)
+
+                next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(3))
+                next_button.place(x=1300, y=680, height= 30, width=100)
+            
+            def q4():
+
+                global root
+                global img_background_label
+
+                canvasRoad = tk.Canvas(root, height=500, width=400, bd=-2)
+                canvasRoad.pack()
+
+                
+                img_background_label = tk.Label(root, image=img_Motorway_4)
+                img_background_label.place(x=500, y=200)
+
+                questionLabel = tk.Label(root, text = q, font=("Helvitca", 25))
+                questionLabel.place(x=50, y=50, height= 100, width=1000)
+
+                checkboxa1 = Checkbutton(root, text = a1, font=("Helvitca", 18), variable = vara1)
+                checkboxa1.deselect()
+                checkboxa1.place(x=200, y=540, height= 40, width=400)
+                
+                checkboxa2 = Checkbutton(root, text = a2, font=("Helvitca", 18), variable = vara2)
+                checkboxa2.deselect()
+                checkboxa2.place(x=200, y=640, height= 40, width=400)
+                
+                checkboxa3 = Checkbutton(root, text = a3, font=("Helvitca", 18), variable = vara3)
+                checkboxa3.deselect()
+                checkboxa3.place(x=800, y=540, height= 40, width=500)
+
+                checkboxa4 = Checkbutton(root, text = a4, font=("Helvitca", 18), variable = vara4)
+                checkboxa4.deselect()
+                checkboxa4.place(x=800, y=640, height= 40, width=500)
+
+                next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(4))
+                next_button.place(x=1300, y=680, height= 30, width=100)
+
+            def q5():
+
+                global root
+                global img_background_label
+
+                canvasRoad = tk.Canvas(root, height=500, width=400, bd=-2)
+                canvasRoad.pack()
+
+                
+                img_background_label = tk.Label(root, image=img_Motorway_5)
+                img_background_label.place(x=500, y=200)
+
+                questionLabel = tk.Label(root, text = q, font=("Helvitca", 25))
+                questionLabel.place(x=50, y=50, height= 100, width=1000)
+
+                checkboxa1 = Checkbutton(root, text = a1, font=("Helvitca", 18), variable = vara1)
+                checkboxa1.deselect()
+                checkboxa1.place(x=200, y=540, height= 40, width=400)
+                
+                checkboxa2 = Checkbutton(root, text = a2, font=("Helvitca", 18), variable = vara2)
+                checkboxa2.deselect()
+                checkboxa2.place(x=200, y=640, height= 40, width=400)
+                
+                checkboxa3 = Checkbutton(root, text = a3, font=("Helvitca", 18), variable = vara3)
+                checkboxa3.deselect()
+                checkboxa3.place(x=800, y=540, height= 40, width=500)
+
+                checkboxa4 = Checkbutton(root, text = a4, font=("Helvitca", 18), variable = vara4)
+                checkboxa4.deselect()
+                checkboxa4.place(x=800, y=640, height= 40, width=500)
+
+                next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(5))
+                next_button.place(x=1300, y=680, height= 30, width=100)
+
+            if questionNum == 1:
+                q1()
+            
+            if questionNum == 2:
+                q2()
+            
+            if questionNum == 3:
+                q3()
+
+            if questionNum == 4:
+                q4()
+            
+            if questionNum == 5:
+                q5()
+
+        def question1():
+            displayQuestion(motorwayq1.q, motorwayq1.a1, motorwayq1.a2, motorwayq1.a3, motorwayq1.a4, 1)
+        
+        def question2():
+            displayQuestion(motorwayq2.q, motorwayq2.a1, motorwayq2.a2, motorwayq2.a3, motorwayq2.a4, 2)
+
+        def question3():
+            displayQuestion(motorwayq3.q, motorwayq3.a1, motorwayq3.a2, motorwayq3.a3, motorwayq3.a4, 3)
+
+        def question4():
+            displayQuestion(motorwayq4.q, motorwayq4.a1, motorwayq4.a2, motorwayq4.a3, motorwayq4.a4, 4)
+        
+        def question5():
+            displayQuestion(motorwayq5.q, motorwayq5.a1, motorwayq5.a2, motorwayq5.a3, motorwayq5.a4, 5)
+
+        question1()
+
+
     if topic == 'alertness':
         print("placeholder")
     if topic == 'documents':
         print("placeholder")
     if topic == 'incidents':
-        print("placeholder")
-    if topic == 'road':
         print("placeholder")
     if topic == 'vulnerable':
         print("placeholder")
@@ -828,7 +1437,7 @@ def questionsScreen(topic):
         print("placeholder")
 
 def resultsScreen():
-    print("placeholder")
+    print("results", score)
 
 def message_popup(reason):
     if reason == 'login':
