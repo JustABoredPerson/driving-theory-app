@@ -5,6 +5,10 @@ from PIL import ImageTk, Image
 import csv
 from tkinter import messagebox
 import random
+import matplotlib.pyplot as plt
+import numpy as np
+
+
 
 score = 0
 
@@ -23,6 +27,15 @@ reg_password_field = tk.Entry(root)
 re_enter_password_field = tk.Entry(root)
 
 name = username_field.get()
+
+game_num_road = 0
+game_num_attitude = 0
+game_num_hazard = 0
+game_num_motorway = 0
+game_num_alertness = 0
+game_num_documents = 0
+game_num_incidents = 0
+game_num_vulnerable = 0
 
 background = Image.open("/Users/nick/Documents/GitHub/driving-theory-test-app/background.png")
 resized = background.resize((1450, 770), Image.ANTIALIAS)
@@ -367,7 +380,7 @@ def loginScreen():
     def loginProcess():
         global root
         global name
-        with open("/Users/nick/Documents/GitHub/driving-theory-app/usernames_passwords.csv", 'r') as csv_file:
+        with open("/Users/nick/Documents/GitHub/driving-theory-test-app/usernames_passwords.csv", 'r') as csv_file:
 
             usernames = []
             passwords = []
@@ -434,7 +447,7 @@ def registering_new_acc_Screen():
 
     def uploading_details_and_logging_in():
         if reg_password_field.get() == re_enter_password_field.get():
-            with open("/Users/nick/Documents/GitHub/driving-theory-app/usernames_passwords.csv",'a', newline='') as f:
+            with open("/Users/nick/Documents/GitHub/driving-theory-test-app/usernames_passwords.csv",'a', newline='') as f:
                 thewriter = csv.writer(f)
                 thewriter.writerow([reg_username_field.get(),reg_password_field.get()])
                 name = username_field.get()
@@ -498,6 +511,8 @@ def questionsScreen(topic):
 
         def checkIfRight(questionNum):
 
+            global game_num_road
+
             global score
             global vara1
             global vara2 
@@ -553,9 +568,11 @@ def questionsScreen(topic):
                     message_popup('select')
                 elif vara3.get() == 1 and vara1.get() == 0 and vara2.get() == 0 and vara4.get() == 0:
                     score +=1 
-                    resultsScreen()
+                    game_num_road += 1
+                    resultsScreen('road')
+                    
                 else: 
-                    resultsScreen()
+                    resultsScreen('road')
         
         def displayQuestion(q, a1, a2, a3, a4, questionNum):
 
@@ -596,6 +613,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(1))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "1/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q2():
 
                 global root
@@ -630,6 +650,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(2))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "2/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q3():
 
                 global root
@@ -663,6 +686,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(3))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "3/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
             
             def q4():
 
@@ -698,6 +724,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(4))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "4/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q5():
 
                 global root
@@ -729,8 +758,11 @@ def questionsScreen(topic):
                 checkboxa4.deselect()
                 checkboxa4.place(x=800, y=640, height= 40, width=500)
 
-                next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(5))
+                next_button = tk.Button(root, text= "End", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(5))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "5/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
 
             if questionNum == 1:
                 q1()
@@ -823,9 +855,9 @@ def questionsScreen(topic):
                     message_popup('select')
                 elif vara4.get() == 1 and vara1.get() == 0 and vara2.get() == 0 and vara3.get() == 0:
                     score +=1 
-                    resultsScreen()
+                    resultsScreen('attitude')
                 else: 
-                    resultsScreen()
+                    resultsScreen('attitude')
     
         def displayQuestion(q, a1, a2, a3, a4, questionNum):
 
@@ -866,6 +898,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(1))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "1/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q2():
 
                 global root
@@ -900,6 +935,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(2))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "2/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q3():
 
                 global root
@@ -933,6 +971,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(3))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "3/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
             
             def q4():
 
@@ -968,6 +1009,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(4))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "4/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q5():
 
                 global root
@@ -1001,6 +1045,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(5))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "5/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
 
             if questionNum == 1:
                 q1()
@@ -1094,9 +1141,9 @@ def questionsScreen(topic):
                     message_popup('select')
                 elif vara3.get() == 1 and vara1.get() == 0 and vara2.get() == 0 and vara4.get() == 0:
                     score +=1 
-                    resultsScreen()
+                    resultsScreen('hazard')
                 else: 
-                    resultsScreen()
+                    resultsScreen('hazard')
         
         def displayQuestion(q, a1, a2, a3, a4, questionNum):
 
@@ -1137,6 +1184,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(1))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "1/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q2():
 
                 global root
@@ -1171,6 +1221,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(2))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "2/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q3():
 
                 global root
@@ -1204,6 +1257,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(3))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "3/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
             
             def q4():
 
@@ -1239,6 +1295,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(4))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "4/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q5():
 
                 global root
@@ -1272,6 +1331,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(5))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+                
+                questionNumLabel = tk.Label(root, text = "5/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
 
             if questionNum == 1:
                 q1()
@@ -1354,9 +1416,9 @@ def questionsScreen(topic):
                     message_popup('select')
                 elif vara3.get() == 1 and vara1.get() == 0 and vara2.get() == 0 and vara4.get() == 0:
                     score +=1 
-                    question5()
+                    question5('motorway')
                 else: 
-                    question5()
+                    question5('motorway')
 
             elif questionNum == 5: 
 
@@ -1407,6 +1469,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(1))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "1/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q2():
 
                 global root
@@ -1441,6 +1506,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(2))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "2/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q3():
 
                 global root
@@ -1474,6 +1542,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(3))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "3/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
             
             def q4():
 
@@ -1509,6 +1580,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(4))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "4/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q5():
 
                 global root
@@ -1542,6 +1616,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(5))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "5/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
 
             if questionNum == 1:
                 q1()
@@ -1625,9 +1702,9 @@ def questionsScreen(topic):
                     message_popup('select')
                 elif vara1.get() == 1 and vara3.get() == 0 and vara2.get() == 0 and vara4.get() == 0:
                     score +=1 
-                    question5()
+                    question5('alertness')
                 else: 
-                    question5()
+                    question5('alertness')
 
             elif questionNum == 5: 
 
@@ -1678,6 +1755,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(1))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "1/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q2():
 
                 global root
@@ -1712,6 +1792,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(2))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "2/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q3():
 
                 global root
@@ -1745,6 +1828,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(3))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "3/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
             
             def q4():
 
@@ -1780,6 +1866,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(4))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "4/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q5():
 
                 global root
@@ -1813,6 +1902,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(5))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "5/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
 
             if questionNum == 1:
                 q1()
@@ -1948,6 +2040,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(1))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "1/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q2():
 
                 global root
@@ -1982,6 +2077,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(2))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "2/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q3():
 
                 global root
@@ -2015,6 +2113,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(3))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "3/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
             
             def q4():
 
@@ -2050,6 +2151,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(4))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "4/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q5():
 
                 global root
@@ -2083,6 +2187,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(5))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "5/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
 
             if questionNum == 1:
                 q1()
@@ -2174,9 +2281,9 @@ def questionsScreen(topic):
                     message_popup('select')
                 elif vara1.get() == 1 and vara4.get() == 0 and vara2.get() == 0 and vara3.get() == 0:
                     score +=1 
-                    resultsScreen()
+                    resultsScreen('incidents')
                 else: 
-                    resultsScreen()
+                    resultsScreen('incidents')
         
         def displayQuestion(q, a1, a2, a3, a4, questionNum):
 
@@ -2217,6 +2324,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(1))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "1/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q2():
 
                 global root
@@ -2251,6 +2361,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(2))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "2/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q3():
 
                 global root
@@ -2284,6 +2397,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(3))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "3/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
             
             def q4():
 
@@ -2319,6 +2435,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(4))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "4/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q5():
 
                 global root
@@ -2352,6 +2471,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(5))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "5/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
 
             if questionNum == 1:
                 q1()
@@ -2443,9 +2565,9 @@ def questionsScreen(topic):
                     message_popup('select')
                 elif vara1.get() == 1 and vara4.get() == 0 and vara2.get() == 0 and vara3.get() == 0:
                     score +=1 
-                    resultsScreen()
+                    resultsScreen('vulnerable')
                 else: 
-                    resultsScreen()
+                    resultsScreen('vulnerable')
         
         def displayQuestion(q, a1, a2, a3, a4, questionNum):
 
@@ -2486,6 +2608,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(1))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "1/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q2():
 
                 global root
@@ -2520,6 +2645,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(2))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "2/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q3():
 
                 global root
@@ -2553,6 +2681,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(3))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "3/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
             
             def q4():
 
@@ -2588,6 +2719,9 @@ def questionsScreen(topic):
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(4))
                 next_button.place(x=1300, y=680, height= 30, width=100)
 
+                questionNumLabel = tk.Label(root, text = "4/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
+
             def q5():
 
                 global root
@@ -2621,6 +2755,9 @@ def questionsScreen(topic):
 
                 next_button = tk.Button(root, text= "Next", padx= 60, pady= 20,font=("Helvitca", 18) ,command=lambda:checkIfRight(5))
                 next_button.place(x=1300, y=680, height= 30, width=100)
+
+                questionNumLabel = tk.Label(root, text = "5/5", font=("Helvitca", 30))
+                questionNumLabel.place(x=150, y=250, height= 100, width=50)
 
             if questionNum == 1:
                 q1()
@@ -2662,10 +2799,129 @@ def questionsScreen(topic):
         random_topic = random.choice(topics)
 
         questionsScreen(random_topic)
+
+       
         
 
-def resultsScreen():
-    print("results", score)
+def resultsScreen(topic):
+
+    global score
+    global game_num_road
+
+    topicsScreen()
+
+    if topic == 'road':
+
+        Attempts = ['Attempt 1']
+        Score = [score]
+
+        plt.ylim(0,5)
+
+        plt.bar(Attempts, Score)
+        plt.title('Road and Traffic signs Results')
+        plt.xlabel('Attempts')
+        plt.ylabel('Score')
+        plt.show()
+
+    if topic == 'attitude':
+
+        Attempts = ['Attempt 1']
+        Score = [score]
+
+        plt.ylim(0,5)
+
+        plt.bar(Attempts, Score)
+        plt.title('Attitude Results')
+        plt.xlabel('Attempts')
+        plt.ylabel('Score')
+        plt.show()
+
+    if topic == 'hazard':
+
+        Attempts = ['Attempt 1']
+        Score = [score]
+
+        plt.ylim(0,5)
+
+        plt.bar(Attempts, Score)
+        plt.title('Hazard Awareness Results')
+        plt.xlabel('Attempts')
+        plt.ylabel('Score')
+        plt.show()
+
+    if topic == 'motorway':
+
+        Attempts = ['Attempt 1']
+        Score = [score]
+
+        plt.ylim(0,5)
+
+        plt.bar(Attempts, Score)
+        plt.title('Motorway Rules Results')
+        plt.xlabel('Attempts')
+        plt.ylabel('Score')
+        plt.show()
+
+    if topic == 'alertness':
+
+        Attempts = ['Attempt 1']
+        Score = [score]
+
+        plt.ylim(0,5)
+
+        plt.bar(Attempts, Score)
+        plt.title('Alertness Results')
+        plt.xlabel('Attempts')
+        plt.ylabel('Score')
+        plt.show()
+
+    if topic == 'documents':
+
+        Attempts = ['Attempt 1']
+        Score = [score]
+
+        plt.ylim(0,5)
+
+        plt.bar(Attempts, Score)
+        plt.title('Documents Results')
+        plt.xlabel('Attempts')
+        plt.ylabel('Score')
+        plt.show()
+        
+    if topic == 'incidents':
+
+        Attempts = ['Attempt 1']
+        Score = [score]
+
+        plt.ylim(0,5)
+
+        plt.bar(Attempts, Score)
+        plt.title('Incidents Results')
+        plt.xlabel('Attempts')
+        plt.ylabel('Score')
+        plt.show()
+
+    if topic == 'vulnerable':
+
+        Attempts = ['Attempt 1']
+        Score = [score]
+
+        plt.ylim(0,5)
+
+        plt.bar(Attempts, Score)
+        plt.title('Vulnerable Road Users Results')
+        plt.xlabel('Attempts')
+        plt.ylabel('Score')
+        plt.show()
+    
+
+
+    
+
+
+    
+
+
 
 def message_popup(reason):
     if reason == 'login':
@@ -2675,6 +2931,6 @@ def message_popup(reason):
     elif reason == 'select':
         messagebox.showerror("Error", "You have not selected an answer")
 
-# loginScreen()
-topicsScreen()
+loginScreen()
+# topicsScreen()
 root.mainloop()
