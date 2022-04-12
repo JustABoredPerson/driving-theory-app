@@ -527,12 +527,17 @@ def registering_new_acc_Screen():
     def clearTextboxinReg():
         # Deletes the inputted characters in the entry fields when called
         reg_username_field.delete(0, END)
+    
+    def clear_reg_pass():
         reg_password_field.delete(0, END)
         re_enter_password_field.delete(0, END)
-    
+
+    def has_numbers(inputString):
+        return any(char.isdigit() for char in inputString)
+
     def uploading_details_and_logging_in(): 
         # Starts an if statement to se if the user inputted password is the same as second password entry as a saftey feature to make sure the user has the password they wanted  
-        if reg_password_field.get() == re_enter_password_field.get():
+        if reg_password_field.get() == re_enter_password_field.get() and len(reg_username_field.get()) >= 4 and len(reg_password_field.get()) >= 4 and has_numbers(reg_password_field.get()) == True:
             # Opens the csv with the append mode
             with open("/Users/nick/Documents/GitHub/driving-theory-test-app/usernames_passwords.csv",'a', newline='') as f:
                 thewriter = csv.writer(f)
@@ -543,17 +548,20 @@ def registering_new_acc_Screen():
             topicsScreen(name)
             clearTextboxinReg()
         else: 
+            if len(reg_username_field.get()) <= 4:
+                clearTextboxinReg()
+                message_popup('short_user')
             # If passwords dont match, error function is called
-            clearTextboxinReg()
-            message_popup('reg')
+            elif reg_password_field.get() != re_enter_password_field.get():
+                clearTextboxinReg()
+                message_popup('reg')
+            elif has_numbers(reg_password_field.get()) == False:
+                clear_reg_pass()
+                message_popup('no_number')
+            elif len(reg_password_field.get()) <= 4:
+                clear_reg_pass()
+                message_popup('short_pass')
         
-
-
-
-
-
-
-
 
 def questionsScreen(topic):
     # Makes variables global so the function can access them
@@ -569,7 +577,7 @@ def questionsScreen(topic):
     for widgets in root.winfo_children():
       widgets.destroy()
 
-    # Checks if the parameter of questiosScreen equals 'road'
+    # Checks if the parameter of questiosScreen() equals 'road'
     if topic == 'road':
 
         # This function checks whether the answer is correct
@@ -967,7 +975,7 @@ def questionsScreen(topic):
 
         question1()
 
-    # Checks if the parameter of questionsScreen equals 'attitudes'
+    # Checks if the parameter of questionsScreen() equals 'attitudes'
     if topic == 'attitude':
 
         # This function checks whether the answer is correct
@@ -1369,7 +1377,7 @@ def questionsScreen(topic):
 
         question1()
 
-    # Checks if the parameter of questionsScreen equals 'attitudes'  
+    # Checks if the parameter of questionsScreen() equals 'hazard'  
     if topic == 'hazard':
         
         # This function checks whether the answer is correct
@@ -1682,6 +1690,7 @@ def questionsScreen(topic):
 
         question1()
 
+    # Checks if the parameter of questionsScreen() equals 'motorway' 
     if topic == 'motorway':
 
         def checkIfRight(questionNum):
@@ -1981,6 +1990,7 @@ def questionsScreen(topic):
 
         question1()
 
+    # Checks if the parameter of questionsScreen() equals 'alertness' 
     if topic == 'alertness':
 
         def checkIfRight(questionNum):
@@ -2281,7 +2291,7 @@ def questionsScreen(topic):
 
         question1()
 
-    
+    # Checks if the parameter of questionsScreen() equals 'documents' 
     if topic == 'documents':
 
         def checkIfRight(questionNum):
@@ -2581,6 +2591,7 @@ def questionsScreen(topic):
 
         question1()
 
+    # Checks if the parameter of questionsScreen() equals 'incidents' 
     if topic == 'incidents':
 
         def checkIfRight(questionNum):
@@ -2880,6 +2891,7 @@ def questionsScreen(topic):
 
         question1()
 
+    # Checks if the parameter of questionsScreen() equals 'vulnerable' 
     if topic == 'vulnerable':
 
         def checkIfRight(questionNum):
@@ -3180,6 +3192,7 @@ def questionsScreen(topic):
 
         question1()
 
+    # Checks if the parameter of questionsScreen() equals 'random' 
     if topic == 'random':
 
         topics = ('vulnerable', 'incidents', 'documents', 'alertness', 'motorway', 'hazard', 'attitude', 'road')
@@ -3314,10 +3327,17 @@ def message_popup(reason):
     elif reason == 'reg':
         messagebox.showerror("Error", "Password doesn't match. Try again.")
     elif reason == 'select':
-        messagebox.showerror("Error", "You have not selected an answer")
+        messagebox.showerror("Error", "You have not selected an answer.")
+    elif reason == 'short_user':
+        messagebox.showerror("Error", "Username is too short. (Needs to be 4 or above)")
+    elif reason == 'no_number':
+        messagebox.showerror("Error", "Password needs to have atleast 1 number.")
+    elif reason == 'short_pass':
+        messagebox.showerror("Error", "Password is too short. (Needs to be more than 4)")
 
 def quit():
-    topicsScreen()
+    global name
+    topicsScreen(name)
 
 loginScreen()
 # topicsScreen()
